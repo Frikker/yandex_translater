@@ -16,6 +16,7 @@ module YandexTranslate
       url = URI.parse("#{BASE_URI}#{method}?key=#{@key}")
       result = JSON(Net::HTTP.post_form(url, args).body)
       raise(ERROR[result['code'].to_i]) if ERROR.has_key?result['code'].to_i
+      result
     end
   end
 end
