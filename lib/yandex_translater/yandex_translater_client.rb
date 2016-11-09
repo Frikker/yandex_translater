@@ -10,7 +10,7 @@ module YandexTranslate
     # langs за все доступные языки
     def list_of_langs(lang = 'en')
       data = { ui: lang }
-      @client.connect('getLangs',data)
+      connect('getLangs',data)
     end
     #на вход должен получить текст, язык которого должен быть определен
     #получает ответ в виде:("code" => ..., "lang" => ...)
@@ -18,7 +18,7 @@ module YandexTranslate
     #lang указывает на язык введенного слова
     def detect(text)
       data = { text: text }
-      @client.connect('detect', data)
+      connect('detect', data)
     end
     #на вход должен получить текст для перевода и язык, на который должен быть осуществлен перевод
     #получает ответ в виде {"code" => ..., "lang" => ..., "text" => ...}
@@ -28,7 +28,7 @@ module YandexTranslate
     #text выводит результат перевода
     def translate(text, lang, format = 'plain')
       data = { text: text, lang: lang, format: format }
-      @client.connect('translate', data)
+      connect('translate', data)
     end
   end
 end
